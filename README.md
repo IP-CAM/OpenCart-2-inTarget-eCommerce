@@ -1,8 +1,8 @@
 # inTarget
 
 Tags: intarget, statistic, conversion, analytic  
-Requires at least: 2.0
-Tested up to: 2.1.0.1
+Requires at least: 2.0  
+Tested up to: 2.1.0.1  
 Stable tag: 1.0  
 License: GNU General Public License, version 2  
 
