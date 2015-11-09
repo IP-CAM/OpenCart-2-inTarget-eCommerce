@@ -1,13 +1,19 @@
 <?php
 
-class ControllerModuleintarget extends Controller
+/**
+ * 2015 inTarget
+ * @author    inTarget RU <https://intarget.ru/>
+ * @copyright 2015 inTarget RU
+ * @license   GNU General Public License, version 2
+ */
+class ControllerAnalyticsIntarget extends Controller
 {
     private $error = array();
-    private $ver = '1.0.0';
+    private $ver = '1.0.1';
 
     public function index()
     {
-        $this->load->language('module/intarget');
+        $this->load->language('modules/intarget');
         $this->document->setTitle($this->language->get('heading_title'));
         $this->load->model('setting/setting');
 
@@ -15,12 +21,13 @@ class ControllerModuleintarget extends Controller
             $this->model_setting_setting->editSetting('intarget', $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
-            $this->response->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
+            $this->response->redirect($this->url->link('extension/modules', 'token=' . $this->session->data['token'], 'SSL'));
         }
 
         $data['heading_title'] = $this->language->get('heading_title');
         $data['text_edit'] = $this->language->get('text_edit');
-        $data['entry_status'] = $this->language->get('entry_status');
+        $data['text_enabled'] = $this->language->get('text_enabled');
+        $data['text_disabled'] = $this->language->get('text_disabled');
         $data['text_email'] = $this->language->get('entry_text_email');
         $data['text_key'] = $this->language->get('entry_text_key');
         $data['button_apply'] = $this->language->get('entry_title_apply');
@@ -37,6 +44,8 @@ class ControllerModuleintarget extends Controller
         $data['projectId'] = '';
         $data['intarget_status'] = $this->config->get('intarget_status');
         $data['error_warning'] = '';
+
+        $data['entry_status'] = $this->language->get('entry_status');
 
         $data['button_save'] = $this->language->get('button_save');
         $data['button_cancel'] = $this->language->get('button_cancel');
@@ -56,17 +65,17 @@ class ControllerModuleintarget extends Controller
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_module'),
-            'href' => $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'),
+            'href' => $this->url->link('extension/modules', 'token=' . $this->session->data['token'], 'SSL'),
         );
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('module/intarget', 'token=' . $this->session->data['token'], 'SSL'),
+            'href' => $this->url->link('modules/intarget', 'token=' . $this->session->data['token'], 'SSL'),
         );
 
-        $data['action'] = $this->url->link('module/intarget', 'token=' . $this->session->data['token'], 'SSL');
-        $data['action_register'] = str_replace('&amp;', '&', $this->url->link('module/intarget/register', 'token=' . $this->session->data['token'], 'SSL'));
-        $data['cancel'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
+        $data['action'] = $this->url->link('modules/intarget', 'token=' . $this->session->data['token'], 'SSL');
+        $data['action_register'] = str_replace('&amp;', '&', $this->url->link('modules/intarget/register', 'token=' . $this->session->data['token'], 'SSL'));
+        $data['cancel'] = $this->url->link('extension/modules', 'token=' . $this->session->data['token'], 'SSL');
 
         $settings = $this->config->get('intarget');
 
@@ -96,7 +105,7 @@ class ControllerModuleintarget extends Controller
         } else {
             $data['projectId'] = '';
         }
-        if(isset($this->request->post['intarget' . '_status'])) {
+        if (isset($this->request->post['intarget'])) {
             $data['intarget_status'] = $this->request->post['intarget_status'];
         } else {
             $data['intarget_status'] = $this->config->get('intarget_status');
@@ -106,12 +115,12 @@ class ControllerModuleintarget extends Controller
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('module/intarget' . '.tpl', $data));
+        $this->response->setOutput($this->load->view('modules/intarget' . '.tpl', $data));
     }
 
     protected function validate()
     {
-        if (!$this->user->hasPermission('modify', 'module/intarget')) {
+        if (!$this->user->hasPermission('modify', 'modules/intarget')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
         return !$this->error;
@@ -121,7 +130,7 @@ class ControllerModuleintarget extends Controller
     {
 
         $json = array();
-        $this->load->language('module/intarget');
+        $this->load->language('modules/intarget');
 
         $domain = 'intarget-dev.lembrd.com';
         $settings = $this->request->post['intarget'];
@@ -129,28 +138,27 @@ class ControllerModuleintarget extends Controller
         $key = $settings['key'];
         $url = $settings['url'];
 
-        if (($domain == '') OR ($email == '') OR ($key == '') OR ($url == '')) {
+        if (($email == '') OR ($key == '')) {
+            $json['result'] = 'error';
+            $json['text'] = $this->language->get('text_error_empty');
+            $json['code'] = 400;
+            $this->response->addHeader('Content-Type: application/json');
+            $this->response->setOutput(json_encode($json));
             return;
         }
-
         $ch = curl_init();
-
         $jsondata = json_encode(array(
-            'email' => $email,
-            'key' => $key,
-            'url' => $url,
-            'cms' => 'opencart')
+                'email' => $email,
+                'key' => $key,
+                'url' => $url,
+                'cms' => 'opencart')
         );
-
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Accept: application/json'));
-
         curl_setopt($ch, CURLOPT_URL, "http://" . $domain . "/api/registration.json");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
         $server_output = curl_exec($ch);
-
         $json_result = json_decode($server_output);
         if (isset($json_result->status)) {
             if (($json_result->status == 'OK') && (isset($json_result->payload))) {
@@ -166,10 +174,10 @@ class ControllerModuleintarget extends Controller
                     $json['code'] = $json_result->code;
 
                 }
-                $query = $this->db->query("SELECT value FROM " . DB_PREFIX . "setting WHERE `key`='config_google_analytics'");
-                $google_code = $query->row['value'];
-                if (!strpos($google_code, 'INTARGET CODE START')) {
-                    $google_code .= "
+                $query = $this->db->query("SELECT value FROM " . DB_PREFIX . "setting WHERE `key`='config_intarget'");
+                $intarget_code = $query->row['value'];
+                if (!strpos($intarget_code, 'INTARGET CODE START')) {
+                    $intarget_code .= "
                         &lt;!-- INTARGET CODE START --&gt;
                           &lt;script type=&quot;text/javascript&quot;&gt;
                             (function(d, w, c) {
@@ -192,7 +200,7 @@ class ControllerModuleintarget extends Controller
                           &lt;/script&gt;
                             &lt;!-- INTARGET CODE END --&gt;
                           ";
-                    $this->db->query("UPDATE " . DB_PREFIX . "setting SET `value`='" . $google_code . "' WHERE `key`='config_google_analytics'");
+                    $this->db->query("UPDATE " . DB_PREFIX . "setting SET `value`='" . $intarget_code . "' WHERE `key`='config_intarget'");
                 }
 
             } elseif ($json_result->status = 'error') {
@@ -209,20 +217,21 @@ class ControllerModuleintarget extends Controller
 
     public function uninstall()
     {
-        $query = $this->db->query("SELECT value FROM " . DB_PREFIX . "setting WHERE `key`='config_google_analytics'");
-        $google_code = $query->row['value'];
+        $query = $this->db->query("SELECT value FROM " . DB_PREFIX . "setting WHERE `key`='config_intarget'");
+        $intarget_code = $query->row['value'];
         $start_text = '&lt;!-- INTARGET CODE START --&gt;';
         $end_text = '&lt;!-- INTARGET CODE END --&gt;';
-        $new_google_code = '';
-        $start = strpos($google_code, $start_text);
+        $new_intarget_code = '';
+        $start = strpos($intarget_code, $start_text);
         if ($start !== false) {
-            if ($start >= 2) $start -= 2;
-            $end = strpos($google_code, $end_text);
+            if ($start >= 2)
+                $start -= 2;
+            $end = strpos($intarget_code, $end_text);
             if ($end !== false) {
                 $end += strlen($end_text);
-                $new_google_code .= substr($google_code, 0, $start);
-                $new_google_code .= substr($google_code, $end);
-                $this->db->query("UPDATE " . DB_PREFIX . "setting SET `value`='" . $new_google_code . "' WHERE `key`='config_google_analytics'");
+                $new_intarget_code .= substr($intarget_code, 0, $start);
+                $new_intarget_code .= substr($intarget_code, $end);
+                $this->db->query("UPDATE " . DB_PREFIX . "setting SET `value`='" . $new_intarget_code . "' WHERE `key`='config_intarget'");
             }
         }
     }
