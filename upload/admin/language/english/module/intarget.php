@@ -8,21 +8,17 @@
  */
 
 // Heading
-$_['heading_title'] = 'intarget';
+$_['heading_title'] = 'inTarget';
 
 // Text
 $_['text_module'] = 'Модули';
 $_['text_edit'] = 'Настройка Модуля inTarget';
 $_['text_success'] = 'Модуль inTarget успешно обновлен!';
 
-$_['text_enabled'] = 'Включен';
-$_['text_disabled'] = 'Выключен';
-
 $_['text_register_success'] = 'Регистрация прошла успешно. Id проекта %s';
 $_['text_register_unsuccess'] = 'Регистрация прошла неуспешно. Код: %s';
 
 // Entry
-$_['entry_status'] = 'Статус';
 $_['entry_text_email'] = 'Email:';
 $_['entry_text_key'] = 'Ключ API:';
 $_['entry_title_apply'] = 'Регистрация проекта';
@@ -36,3 +32,4 @@ $_['entry_succ_mess2'] = 'для просмотра статистики.';
 // Error
 $_['error_permission'] = 'У Вас нет прав для изменения модуля inTarget!';
 ?>
+

@@ -6,7 +6,7 @@
  * @copyright 2015 inTarget RU
  * @license   GNU General Public License, version 2
  */
-class ControllerAnalyticsIntarget extends Controller
+class ControllerModuleIntarget extends Controller
 {
     private $error = array();
     private $ver = '1.0.1';
@@ -42,10 +42,7 @@ class ControllerAnalyticsIntarget extends Controller
         $data['url'] = HTTP_CATALOG;
         $data['ver'] = $this->ver;
         $data['projectId'] = '';
-        $data['intarget_status'] = $this->config->get('intarget_status');
         $data['error_warning'] = '';
-
-        $data['entry_status'] = $this->language->get('entry_status');
 
         $data['button_save'] = $this->language->get('button_save');
         $data['button_cancel'] = $this->language->get('button_cancel');
@@ -104,11 +101,6 @@ class ControllerAnalyticsIntarget extends Controller
             $data['projectId'] = $settings['projectId'];
         } else {
             $data['projectId'] = '';
-        }
-        if (isset($this->request->post['intarget'])) {
-            $data['intarget_status'] = $this->request->post['intarget_status'];
-        } else {
-            $data['intarget_status'] = $this->config->get('intarget_status');
         }
 
         $data['header'] = $this->load->controller('common/header');
@@ -238,3 +230,4 @@ class ControllerAnalyticsIntarget extends Controller
 }
 
 ?>
+

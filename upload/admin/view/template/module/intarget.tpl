@@ -55,24 +55,9 @@
                     <? }*/ ?>
                     <div id="settings"
                     <?php /*if ($projectId) { echo "style='display:none'"; }*/ ?>>
-
                     <input id="projectId" type="hidden" name="intarget[projectId]"
                            value="<?php echo $projectId; ?>"/>
 
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
-                        <div class="col-sm-10">
-                            <select name="intarget_status" id="input-status" class="form-control"  style="width: auto; display: inline-block">
-                                <?php if ($intarget_status) { ?>
-                                <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                                <option value="0"><?php echo $text_disabled; ?></option>
-                                <?php } else { ?>
-                                <option value="1"><?php echo $text_enabled; ?></option>
-                                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label"
                                for="input-name"><?php echo $text_email; ?></label>
@@ -113,7 +98,6 @@
                     </div>
             </div>
             </form>
-
             <?php if (!$projectId) { ?>
             <div class="help_msg">
                 <p>Введите email и ключ API из личного кабинета <a href="https://intarget.ru"
@@ -152,9 +136,7 @@
 <script type="text/javascript">
     function apply() {
         $form = $('#form-category');
-
         $(".alert").remove();
-
         $.post('<?php echo $action_register; ?>', $form.serialize())
                 .done(
                 function (json) {
@@ -194,6 +176,4 @@
         );
     }
 </script>
-
-
 <?php echo $footer; ?>
