@@ -128,7 +128,7 @@ class ControllerModuleIntarget extends Controller {
         $json = array();
         $this->load->language('module/'. $this->name);
 
-        $domain = 'dev.intarget.ru';
+        $domain = 'intarget-dev.lembrd.com';
         $settings = $this->request->post[$this->name];
         $email = $settings['email'];//'s-m-o-k@list.ru';
         $key = $settings['key'];//'IolyfSM7oq3Ts62CPL7QCjou0hfmna8R';
@@ -192,7 +192,7 @@ class ControllerModuleIntarget extends Controller {
       f = function () { n.parentNode.insertBefore(s, n); };
       s.type = &quot;text/javascript&quot;;
       s.async = true;
-      s.src = &quot;//dev.lembrd.com/utlanalytics/loader.js&quot;;
+      s.src = &quot;//intarget-dev.lembrd.com/utlanalytics/loader.js&quot;;
 
       if (w.opera == &quot;[object Opera]&quot;) {
         d.addEventListener(&quot;DOMContentLoaded&quot;, f, false);
