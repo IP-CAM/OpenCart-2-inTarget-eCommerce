@@ -148,7 +148,8 @@ class ControllerModuleIntarget extends Controller {
         $jsondata = json_encode(array(
             'email' => $email,
             'key' => $key,
-            'url' => $url));
+            'url' => $url,
+            'cms' => 'opencart2'));
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Accept: application/json'));
 
