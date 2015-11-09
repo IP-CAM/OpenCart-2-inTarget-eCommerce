@@ -166,7 +166,7 @@ class ControllerModuleIntarget extends Controller
                     $json['code'] = $json_result->code;
 
                 }
-                $query = $this->db->query("SELECT value FROM " . DB_PREFIX . "setting WHERE `key`='config_intarget'");
+                $query = $this->db->query("SELECT value FROM " . DB_PREFIX . "setting WHERE `key`='config_google_analytics'");
                 $intarget_code = $query->row['value'];
                 if (!strpos($intarget_code, 'INTARGET CODE START')) {
                     $intarget_code .= "
@@ -192,7 +192,7 @@ class ControllerModuleIntarget extends Controller
                           &lt;/script&gt;
                             &lt;!-- INTARGET CODE END --&gt;
                           ";
-                    $this->db->query("UPDATE " . DB_PREFIX . "setting SET `value`='" . $intarget_code . "' WHERE `key`='config_intarget'");
+                    $this->db->query("UPDATE " . DB_PREFIX . "setting SET `value`='" . $intarget_code . "' WHERE `key`='config_google_analytics'");
                 }
 
             } elseif ($json_result->status = 'error') {
@@ -209,7 +209,7 @@ class ControllerModuleIntarget extends Controller
 
     public function uninstall()
     {
-        $query = $this->db->query("SELECT value FROM " . DB_PREFIX . "setting WHERE `key`='config_intarget'");
+        $query = $this->db->query("SELECT value FROM " . DB_PREFIX . "setting WHERE `key`='config_google_analytics'");
         $intarget_code = $query->row['value'];
         $start_text = '&lt;!-- INTARGET CODE START --&gt;';
         $end_text = '&lt;!-- INTARGET CODE END --&gt;';
@@ -223,11 +223,10 @@ class ControllerModuleIntarget extends Controller
                 $end += strlen($end_text);
                 $new_intarget_code .= substr($intarget_code, 0, $start);
                 $new_intarget_code .= substr($intarget_code, $end);
-                $this->db->query("UPDATE " . DB_PREFIX . "setting SET `value`='" . $new_intarget_code . "' WHERE `key`='config_intarget'");
+                $this->db->query("UPDATE " . DB_PREFIX . "setting SET `value`='" . $new_intarget_code . "' WHERE `key`='config_google_analytics'");
             }
         }
     }
 }
 
 ?>
-
