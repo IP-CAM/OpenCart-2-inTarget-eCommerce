@@ -13,7 +13,7 @@ class ControllerAnalyticsIntarget extends Controller
 
     public function index()
     {
-        $this->load->language('modules/intarget');
+        $this->load->language('module/intarget');
         $this->document->setTitle($this->language->get('heading_title'));
         $this->load->model('setting/setting');
 
@@ -21,7 +21,7 @@ class ControllerAnalyticsIntarget extends Controller
             $this->model_setting_setting->editSetting('intarget', $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
-            $this->response->redirect($this->url->link('extension/modules', 'token=' . $this->session->data['token'], 'SSL'));
+            $this->response->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
         }
 
         $data['heading_title'] = $this->language->get('heading_title');
@@ -65,17 +65,17 @@ class ControllerAnalyticsIntarget extends Controller
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_module'),
-            'href' => $this->url->link('extension/modules', 'token=' . $this->session->data['token'], 'SSL'),
+            'href' => $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'),
         );
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('modules/intarget', 'token=' . $this->session->data['token'], 'SSL'),
+            'href' => $this->url->link('module/intarget', 'token=' . $this->session->data['token'], 'SSL'),
         );
 
-        $data['action'] = $this->url->link('modules/intarget', 'token=' . $this->session->data['token'], 'SSL');
-        $data['action_register'] = str_replace('&amp;', '&', $this->url->link('modules/intarget/register', 'token=' . $this->session->data['token'], 'SSL'));
-        $data['cancel'] = $this->url->link('extension/modules', 'token=' . $this->session->data['token'], 'SSL');
+        $data['action'] = $this->url->link('module/intarget', 'token=' . $this->session->data['token'], 'SSL');
+        $data['action_register'] = str_replace('&amp;', '&', $this->url->link('module/intarget/register', 'token=' . $this->session->data['token'], 'SSL'));
+        $data['cancel'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
 
         $settings = $this->config->get('intarget');
 
@@ -115,12 +115,12 @@ class ControllerAnalyticsIntarget extends Controller
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('modules/intarget' . '.tpl', $data));
+        $this->response->setOutput($this->load->view('module/intarget' . '.tpl', $data));
     }
 
     protected function validate()
     {
-        if (!$this->user->hasPermission('modify', 'modules/intarget')) {
+        if (!$this->user->hasPermission('modify', 'module/intarget')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
         return !$this->error;
@@ -130,7 +130,7 @@ class ControllerAnalyticsIntarget extends Controller
     {
 
         $json = array();
-        $this->load->language('modules/intarget');
+        $this->load->language('module/intarget');
 
         $domain = 'intarget-dev.lembrd.com';
         $settings = $this->request->post['intarget'];
