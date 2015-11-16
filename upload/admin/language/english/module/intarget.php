@@ -16,7 +16,6 @@ $_['text_edit'] = 'Настройка Модуля inTarget';
 $_['text_success'] = 'Модуль inTarget успешно обновлен!';
 
 $_['text_register_success'] = 'Регистрация прошла успешно. Id проекта %s';
-$_['text_register_unsuccess'] = 'Регистрация прошла неуспешно. Код: %s';
 
 // Entry
 $_['entry_text_email'] = 'Email:';
@@ -31,4 +30,8 @@ $_['entry_succ_mess2'] = 'для просмотра статистики.';
 
 // Error
 $_['error_permission'] = 'У Вас нет прав для изменения модуля inTarget!';
+$_['error_error_403'] = 'Неверно введен email или ключ API.';
+$_['error_error_404'] = 'Данный email не зарегистрирован на сайте http://intarget.ru';
+$_['error_error_500'] = 'Данный сайт уже используется на сайте http://intarget.ru';
+$_['error_error_400'] = 'Заполните обязательные поля';
 ?>

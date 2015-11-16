@@ -27,7 +27,7 @@
             <button type="button" class="close" data-dismiss="alert">&times;</button>
         </div>
         <?php }
-            if ($projectId) { ?>
+            if ($intarget_id) { ?>
         <div class="alert alert-success">
             <i class="fa fa-exclamation-circle"></i> Поздравляем! Ваш сайт успешно привязан к
             аккаунту <a href="https://intarget.ru" target="_blank">inTarget.ru</a>.
@@ -50,131 +50,82 @@
                 <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"
                       id="form-category"
                       class="form-horizontal">
-                    <?php /*if ($projectId) { ?>
-                    <?php echo $entry_projectId . ' ' . $projectId?>
+                    <?php /*if ($intarget_id) { ?>
+                    <?php echo $entry_intarget_id . ' ' . $intarget_id?>
                     <? }*/ ?>
                     <div id="settings"
-                    <?php /*if ($projectId) { echo "style='display:none'"; }*/ ?>>
-                    <input id="projectId" type="hidden" name="intarget[projectId]"
-                           value="<?php echo $projectId; ?>"/>
+                    <?php /*if ($intarget_id) { echo "style='display:none'"; }*/ ?>>
 
-                    <div class="form-group <?php if (!$projectId) echo "required";?>">
-                    <label class="col-sm-2 control-label"
-                           for="input-name"><?php echo $text_email; ?></label>
+                    <input id="intarget_id" type="hidden" name="intarget_id"
+                           value="<?php echo isset($intarget_id) ? $intarget_id : ''; ?>"/>
 
-                    <div class="col-sm-10">
-                        <input type="text" name="intarget[email]"
-                               value="<?php echo isset($email) ? $email : ''; ?>"
-                               placeholder="<?php echo $email_placeholder; ?>" id="input-name"
-                               class="form-control" size="50"
-                               style="width: auto; display: inline-block" <?php if ($projectId) { echo "disabled"; } ?>
-                        /> <?php if ($projectId) { echo '<i class="fa fa-check fa-2x text-success"></i>
-                        '; } ?>
+                    <input id="intarget_code" type="hidden" name="intarget_code" value="<?php echo isset($intarget_code) ? trim(htmlspecialchars($intarget_code)) : '' ; ?>">
+
+                    <div class="form-group <?php if (!$intarget_id) echo "required";?>">
+                        <label class="col-sm-2 control-label"
+                               for="input-name"><?php echo $text_email; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="intarget_email" id="intarget_email"
+                                   value="<?php echo isset($intarget_email) ? $intarget_email : ''; ?>"
+                                   placeholder="<?php echo $email_placeholder; ?>"
+                                   class="form-control" size="50"
+                                   style="width: auto; display: inline-block" <?php if ($intarget_id) { echo "disabled"; } ?>/>
+                            <?php if ($intarget_id) { echo '<i class="fa fa-check fa-2x text-success"></i>
+                            '; } ?>
+                        </div>
+                    </div>
+                    <div class="form-group <?php if (!$intarget_id) echo "required";?>">
+                        <label class="col-sm-2 control-label"
+                               for="input-name"><?php echo $text_key; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="intarget_key" id="intarget_key"
+                                   value="<?php echo isset($intarget_key) ? $intarget_key : ''; ?>"
+                                   placeholder="<?php echo $key_placeholder; ?>"
+                                   class="form-control" size="50"
+                                   style="width: auto; display: inline-block" <?php if ($intarget_id) { echo "disabled"; } ?>/>
+                             <?php if ($intarget_id) { echo '<i class="fa fa-check fa-2x text-success"></i>
+                            '; } ?>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: none; visibility: hidden">
+                        <label class="col-sm-2 control-label"
+                               for="input-name"><?php echo $entry_url; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="url" value="<?php echo $url; ?>"
+                                   placeholder="<?php echo $entry_url; ?>" id="intarget_url"
+                                   class="form-control"/>
+                        </div>
                     </div>
             </div>
-            <div class="form-group <?php if (!$projectId) echo "required";?>">
-            <label class="col-sm-2 control-label"
-                   for="input-name"><?php echo $text_key; ?></label>
+            </form>
+            <?php if (!$intarget_id) { ?>
+            <div class="help_msg">
+                <p>Введите email и ключ API из личного кабинета <a href="https://intarget.ru"
+                                                                   target="_blank">inTarget.ru</a>
+                </p>
 
-            <div class="col-sm-10">
-                <input type="text" name="intarget[key]"
-                       value="<?php echo isset($key) ? $key : ''; ?>"
-                       placeholder="<?php echo $key_placeholder; ?>" id="input-name"
-                       class="form-control" size="50"
-                       style="width: auto; display: inline-block" <?php if ($projectId) { echo "disabled"; } ?>
-                /> <?php if ($projectId) { echo '<i class="fa fa-check fa-2x text-success"></i>
-                '; } ?>
+                <p>Если вы ещё не зарегистрировались в сервисе inTarget это можно сделать по ссылке
+                    <a href="https://intarget.ru" target="_blank">inTarget.ru</a></p>
             </div>
-        </div>
-        <div class="form-group" style="display: none; visibility: hidden">
-            <label class="col-sm-2 control-label"
-                   for="input-name"><?php echo $entry_url; ?></label>
-
-            <div class="col-sm-10">
-                <input type="text" name="intarget[url]" value="<?php echo $url; ?>"
-                       placeholder="<?php echo $entry_url; ?>" id="input-name"
-                       class="form-control"/>
+            <?php } ?>
+            <hr>
+            <div class="help_succ_msg" style="display: none;">
+                <p><?php echo $succ_mess1;?> <a href="https://intarget.ru" target="_blank">inTarget.ru</a> <? echo $succ_mess2;?>
+                </p>
             </div>
-        </div>
-    </div>
-    </form>
-    <?php if (!$projectId) { ?>
-    <div class="help_msg">
-        <p>Введите email и ключ API из личного кабинета <a href="https://intarget.ru"
-                                                           target="_blank">inTarget.ru</a>
-        </p>
-
-        <p>Если вы ещё не зарегистрировались в сервисе inTarget это можно сделать по ссылке
-            <a href="https://intarget.ru" target="_blank">inTarget.ru</a></p>
-    </div>
-    <?php } ?>
-    <hr>
-    <div class="help_succ_msg" style="display: none;">
-        <p><?php echo $succ_mess1;?> <a href="https://intarget.ru" target="_blank">inTarget.ru</a> <? echo $succ_mess2;?>
-        </p>
-    </div>
-    <?php if ($projectId) {
+            <?php if ($intarget_id) {
                echo "<p>";
-    echo $succ_mess1;?> <a href="https://intarget.ru" target="_blank">inTarget.ru</a> <? echo $succ_mess2;
+            echo $succ_mess1;?> <a href="https://intarget.ru" target="_blank">inTarget.ru</a> <? echo $succ_mess2;
                echo "</p>";
-    }
-    if (!$projectId) { ?>
-    <button onclick="apply();" type="button" data-toggle="tooltip"
-            title="<?php echo $button_apply; ?>"
-            class="btn btn-success"
-            style="margin-bottom: 20px;display: block;"><?php echo $auth; ?>
-    </button>
-    <?php } ?>
-
-    <?php echo '<p>';
-    echo $tech_support;?> <a href="mailto:plugins@intarget.ru">plugins@intarget.ru</a></p>
-    <p>Opencart inTarget ver.<?php echo $ver;?></p>
+            }
+            echo '<p>';
+            echo $tech_support;?> <a href="mailto:plugins@intarget.ru">plugins@intarget.ru</a></p>
+            <p>Opencart inTarget ver.<?php echo $ver;?></p>
+        </div>
+    </div>
 </div>
 </div>
-</div>
-</div>
-<script type="text/javascript">
-    function apply() {
-        $form = $('#form-category');
-        $(".alert").remove();
-        $.post('<?php echo $action_register; ?>', $form.serialize())
-                .done(
-                function (json) {
-                    if (json.result == 'success') {
-                        $('.form-group').removeClass('required');
-                        $('.form-control').after('<i class="fa fa-check fa-2x text-success"></i>');
-                        $('#projectId').val(json.projectId);
-                        $('.btn-success').hide();
-                        $('.help_msg').hide();
-                        $('.help_succ_msg').show();
-                        $('.form-control').attr('disabled', 'disabled');
-                        switch (json.code) {
-                            case 200:
-                                $('.panel.panel-default').before('<div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> Поздравляем! Ваш сайт успешно привязан к аккаунту <a href="https://intarget.ru" target="_blank">inTarget.ru</a>. <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-                                break;
-                        }
-                    } else if (json.result == 'error') {
-                        var errorText = json.code;
-                        switch (json.code) {
-                            case 403:
-                                errorText = ' Неверно введен email или ключ API.';
-                                break;
-                            case 404:
-                                errorText = ' Данный email не зарегистрирован на сайте http://intarget.ru';
-                                break;
-                            case 500:
-                                errorText = ' Данный сайт уже используется на сайте http://intarget.ru';
-                                break;
-                            case 400:
-                                errorText = 'Заполните обязательные поля';
-                                break;
-                        }
-                        $('.panel.panel-default').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + errorText +
-                                '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                                '</div>');
-                    }
-                }
-        );
-    }
-</script>
 <?php echo $footer; ?>
