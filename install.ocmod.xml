@@ -17,7 +17,7 @@
             <search index="1">
                 <![CDATA[$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));]]></search>
             <add position="after">
-                <![CDATA[$json['total'] .= "<script type=\"text/javascript\">(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('del-from-cart'); console.log('del-from-cart');});})(window, 'inTargetCallbacks');</script>";]]></add>
+                <![CDATA[$json['total'] .= "<script type=\"text/javascript\">inTarget.event('del-from-cart'); console.log('del-from-cart');</script>";]]></add>
         </operation>
     </file>
 
