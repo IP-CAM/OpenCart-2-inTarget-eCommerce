@@ -11,13 +11,13 @@
             <search>
                 <![CDATA[$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));]]></search>
             <add position="after">
-                <![CDATA[$json['success'] .= "<script type=\"text/javascript\">(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('add-to-cart');});})(window, 'inTargetCallbacks');console.log('add-to-car');</script>";]]></add>
+                <![CDATA[$json['success'] .= "<script type=\"text/javascript\">inTarget.event('add-to-cart');console.log('add-to-cart');</script>";]]></add>
         </operation>
         <operation>
             <search index="1">
                 <![CDATA[$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));]]></search>
             <add position="after">
-                <![CDATA[$json['total'] .= "<script type=\"text/javascript\">(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('del-from-cart');});})(window, 'inTargetCallbacks');console.log('del-from-cart');</script>";]]></add>
+                <![CDATA[$json['total'] .= "<script type=\"text/javascript\">(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('del-from-cart'); console.log('del-from-cart');});})(window, 'inTargetCallbacks');</script>";]]></add>
         </operation>
     </file>
 
@@ -41,7 +41,7 @@
             <search>
                 <![CDATA[var shipping_address = $('#payment-address input[name=\'shipping_address\']:checked').prop('value');]]></search>
             <add position="before" offset="1">
-                <![CDATA[(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg');});})(window, 'inTargetCallbacks');console.log('user-reg');]]></add>
+                <![CDATA[(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg'); console.log('user-reg');});})(window, 'inTargetCallbacks');]]></add>
         </operation>
     </file>
 
@@ -65,7 +65,7 @@ console.log('item-view');
             <search>
                 <![CDATA[$data['button_upload'] = $this->language->get('button_upload');]]></search>
             <add position="before">
-                <![CDATA[$data['intarget_script'] = "<script>(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg');});})(window, 'inTargetCallbacks');console.log(user-reg);</script>";]]></add>
+                <![CDATA[$data['intarget_script'] = "<script>(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg'); console.log('user-reg');});})(window, 'inTargetCallbacks');</script>";]]></add>
         </operation>
     </file>
 
@@ -74,7 +74,7 @@ console.log('item-view');
             <search>
                 <![CDATA[$data['button_continue'] = $this->language->get('button_continue');]]></search>
             <add position="after">
-                <![CDATA[$data['button_continue'] .= "<script>(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg');});})(window, 'inTargetCallbacks');console.log(user-reg);</script>";]]></add>
+                <![CDATA[$data['button_continue'] .= "<script>(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg'); console.log('user-reg');});})(window, 'inTargetCallbacks');</script>";]]></add>
         </operation>
     </file>
 
@@ -83,7 +83,7 @@ console.log('item-view');
             <search>
                 <![CDATA[$data['button_continue'] = $this->language->get('button_continue');]]></search>
             <add position="after">
-                <![CDATA[$data['button_continue'] .= "<script>(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg');});})(window, 'inTargetCallbacks');console.log(user-reg);</script>";]]></add>
+                <![CDATA[$data['button_continue'] .= "<script>(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg'); console.log('user-reg');});})(window, 'inTargetCallbacks');</script>";]]></add>
         </operation>
     </file>
 
