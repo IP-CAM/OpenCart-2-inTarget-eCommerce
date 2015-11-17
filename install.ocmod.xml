@@ -41,7 +41,7 @@
             <search>
                 <![CDATA[var shipping_address = $('#payment-address input[name=\'shipping_address\']:checked').prop('value');]]></search>
             <add position="before" offset="1">
-                <![CDATA[(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg'); console.log('user-reg');});})(window, 'inTargetCallbacks');]]></add>
+                <![CDATA[inTarget.event('user-reg'); console.log('user-reg');]]></add>
         </operation>
     </file>
 
