@@ -22,7 +22,7 @@ License: GNU General Public License, version 2
 ## Установка автоматически
   - В разделе *Extensions - Extension Installer* (*Модули - Установка расширений*) установите архив модуля intarget.ocmod.zip;
   - Установите и включите модификацию модуля в разделе *Extensions - Modifications* (*Модули - Модификации*) *intarget modification*.
-  - Обносите кэш модификаций, чтобы они вступили в силу (в верхнем правом углу *Refresh* или *Обновить*).
+  - Обносите кэш модификаций, чтобы изменения вступили в силу (верхний правый угол *Refresh* или *Обновить*).
   - Установите и включите модуль в разделе *Extensions - Мodules* (*Модули - Модули*).
   - Введите **email** и **ключ API** полученные в ЛК [inTarget](https://intarget.ru) и нажмите *Сохранить*.
 
@@ -54,4 +54,3 @@ License: GNU General Public License, version 2
 
 #### 1.0
  * Релиз.
-
