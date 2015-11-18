@@ -118,7 +118,7 @@ class ControllerModuleIntarget extends Controller
 
         $this->load->language('module/intarget');
 
-        $domain = 'intarget-dev.lembrd.com';
+        $domain = 'https://intarget.ru';
 
         if (isset($this->request->post['intarget_key'])) {
             $key = $this->request->post['intarget_key'];
@@ -147,7 +147,7 @@ class ControllerModuleIntarget extends Controller
         );
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Accept: application/json'));
-        curl_setopt($ch, CURLOPT_URL, "http://" . $domain . "/api/registration.json");
+        curl_setopt($ch, CURLOPT_URL, $domain . "/api/registration.json");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -186,7 +186,7 @@ class ControllerModuleIntarget extends Controller
 			  f = function () { n.parentNode.insertBefore(s, n); };
 			  s.type = 'text/javascript';
 			  s.async = true;
-			  s.src = '//rt.intarget-dev.lembrd.com/loader.js';
+			  s.src = '//rt.intarget.ru/loader.js';
 
 			  if (w.opera == '[object Opera]') {
 				  d.addEventListener('DOMContentLoaded', f, false);
@@ -198,4 +198,3 @@ class ControllerModuleIntarget extends Controller
 		<!-- INTARGET CODE END -->";
     }
 }
-

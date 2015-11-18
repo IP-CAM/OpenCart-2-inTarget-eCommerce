@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <modification>
-    <name>intarget modification</name>
+    <name>inTarget Modification</name>
     <code>intarget modification</code>
     <version>1.0.1</version>
     <author>inTarget Team</author>
@@ -105,4 +105,4 @@ console.log('item-view');
         </operation>
     </file>
 
-</modification>	
+</modification>
