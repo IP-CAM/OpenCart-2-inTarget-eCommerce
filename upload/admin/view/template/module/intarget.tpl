@@ -91,7 +91,7 @@
                     </div>
                     <div class="form-group" style="display: none; visibility: hidden">
                         <label class="col-sm-2 control-label"
-                               for="input-name"><?php echo $entry_url; ?></label>
+                               for="input-name"></label>
 
                         <div class="col-sm-10">
                             <input type="text" name="url" value="<?php echo $url; ?>" id="intarget_url"
