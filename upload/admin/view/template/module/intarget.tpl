@@ -94,8 +94,7 @@
                                for="input-name"><?php echo $entry_url; ?></label>
 
                         <div class="col-sm-10">
-                            <input type="text" name="url" value="<?php echo $url; ?>"
-                                   placeholder="<?php echo $entry_url; ?>" id="intarget_url"
+                            <input type="text" name="url" value="<?php echo $url; ?>" id="intarget_url"
                                    class="form-control"/>
                         </div>
                     </div>
