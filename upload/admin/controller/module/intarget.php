@@ -10,7 +10,7 @@ class ControllerModuleIntarget extends Controller
 {
     private $error = array();
     private $name = "intarget";
-    private $ver = '1.0.1';
+    private $ver = '1.0.2';
 
     public function index()
     {
