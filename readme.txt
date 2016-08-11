@@ -4,7 +4,7 @@ Tags: intarget, analytics, statistics, sales, widgets, ecommerce, интарге
 Requires at least: 2.0.3.1 (rs.2)
 Tested up to: 2.3.0.2
 Stable tag: 1.0.2
-License: GNU General Public License, version 2
+License: GNU General Public License, version 3
 
 **inTarget eCommerce** &mdash; система аналитики для интернет-магазинов, с возможностью отслеживать продажи и анализировать конверсии в реальном времени.
 
