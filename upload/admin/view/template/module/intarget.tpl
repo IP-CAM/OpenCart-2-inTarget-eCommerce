@@ -40,7 +40,7 @@
                 <h3 class="panel-title"><i class="fa fa-pencil"></i><?php echo $text_edit; ?></h3>
             </div>
             <div class="panel-body">
-                <p><b>inTarget</b> — сервис повышения продаж и аналитика посетителей сайта.</p>
+                <p><b>inTarget</b> &mdash; сервис повышения продаж и аналитика посетителей сайта.</p>
 
                 <p>Оцените принципиально новый подход к просмотру статистики. Общайтесь со своей
                     аудиторией, продавайте
@@ -102,22 +102,22 @@
             </form>
             <?php if (!$intarget_id) { ?>
             <div class="help_msg">
-                <p>Введите email и ключ API из личного кабинета <a href="https://intarget.ru"
-                                                                   target="_blank">inTarget.ru</a>
+                <p>Введите Email и ключ API из личного кабинета <a href="https://intarget.ru"
+                                                                   target="_blank">inTarget</a>
                 </p>
 
                 <p>Если вы ещё не зарегистрировались в сервисе inTarget это можно сделать по ссылке
-                    <a href="https://intarget.ru" target="_blank">inTarget.ru</a></p>
+                    <a href="https://intarget.ru" target="_blank">inTarget</a></p>
             </div>
             <?php } ?>
             <hr>
             <div class="help_succ_msg" style="display: none;">
-                <p><?php echo $succ_mess1;?> <a href="https://intarget.ru" target="_blank">inTarget.ru</a> <? echo $succ_mess2;?>
+                <p><?php echo $succ_mess1;?> <a href="https://intarget.ru" target="_blank">inTarget</a> <? echo $succ_mess2;?>
                 </p>
             </div>
             <?php if ($intarget_id) {
                echo "<p>";
-            echo $succ_mess1;?> <a href="https://intarget.ru" target="_blank">inTarget.ru</a> <? echo $succ_mess2;
+            echo $succ_mess1;?> <a href="https://intarget.ru" target="_blank">inTarget</a> <? echo $succ_mess2;
                echo "</p>";
             }
             echo '<p>';

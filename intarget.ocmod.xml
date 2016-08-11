@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <modification>
     <name>inTarget Modification</name>
-    <code>intarget modification</code>
-    <version>1.0.1</version>
+    <code>intarget_modification</code>
+    <version>1.0.2</version>
     <author>inTarget Team</author>
     <link>https://intarget.ru/</link>
-
     <file path="catalog/controller/checkout/cart.php">
         <operation>
             <search>
@@ -20,7 +19,6 @@
                 <![CDATA[$json['total'] .= "<script type=\"text/javascript\">inTarget.event('del-from-cart'); console.log('del-from-cart');</script>";]]></add>
         </operation>
     </file>
-
     <file path="catalog/view/theme/*/template/product/category.tpl">
         <operation>
             <search><![CDATA[<div class="container">]]></search>
@@ -35,7 +33,6 @@
         </script>]]></add>
         </operation>
     </file>
-
     <file path="catalog/view/theme/*/template/checkout/checkout.tpl">
         <operation>
             <search>
@@ -44,7 +41,6 @@
                 <![CDATA[inTarget.event('user-reg'); console.log('user-reg');]]></add>
         </operation>
     </file>
-
     <file path="catalog/view/theme/*/template/product/product.tpl">
         <operation>
             <search><![CDATA[<div class="container">]]></search>
@@ -59,7 +55,6 @@ console.log('item-view');
 </script>]]></add>
         </operation>
     </file>
-
     <file path="catalog/controller/checkout/register.php">
         <operation>
             <search>
@@ -68,7 +63,6 @@ console.log('item-view');
                 <![CDATA[$data['intarget_script'] = "<script>(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg'); console.log('user-reg');});})(window, 'inTargetCallbacks');</script>";]]></add>
         </operation>
     </file>
-
     <file path="catalog/controller/checkout/success.php">
         <operation>
             <search>
@@ -77,7 +71,6 @@ console.log('item-view');
                 <![CDATA[$data['button_continue'] .= "<script>(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('success-order'); console.log('success-order');});})(window, 'inTargetCallbacks');</script>";]]></add>
         </operation>
     </file>
-
     <file path="catalog/controller/account/success.php">
         <operation>
             <search>
@@ -86,7 +79,6 @@ console.log('item-view');
                 <![CDATA[$data['button_continue'] .= "<script>(function(w, c) {w[c] = w[c] || [];w[c].push(function(inTarget) {inTarget.event('user-reg'); console.log('user-reg');});})(window, 'inTargetCallbacks');</script>";]]></add>
         </operation>
     </file>
-
     <file path="catalog/controller/common/header.php">
         <operation>
             <search>
@@ -95,7 +87,6 @@ console.log('item-view');
                 <![CDATA[$data['intarget_code'] = $this->load->controller('module/intarget');]]></add>
         </operation>
     </file>
-
     <file path="catalog/view/theme/*/template/common/header.tpl">
         <operation>
             <search>
@@ -104,5 +95,4 @@ console.log('item-view');
                 <![CDATA[<?php echo $intarget_code; ?>]]></add>
         </operation>
     </file>
-
 </modification>

@@ -1,10 +1,9 @@
 <?php
 /**
- * 2015 inTarget
- *
- * @author    inTarget RU <https://intarget.ru/>
- * @copyright 2015 inTarget RU
- * @license   GNU General Public License, version 2
+ * 2016 inTarget
+ * @author    inTarget Team <https://intarget.ru/>
+ * @copyright 2015 inTarget
+ * @license   GNU General Public License, version 3
  */
 
 // Heading
@@ -30,8 +29,8 @@ $_['entry_succ_mess2'] = 'для просмотра статистики.';
 
 // Error
 $_['error_permission'] = 'У Вас нет прав для изменения модуля inTarget!';
-$_['error_error_403'] = 'Неверно введен email или ключ API.';
-$_['error_error_404'] = 'Данный email не зарегистрирован на сайте http://intarget.ru';
+$_['error_error_403'] = 'Неверно введен Email или ключ API.';
+$_['error_error_404'] = 'Данный Email не зарегистрирован на сайте http://intarget.ru';
 $_['error_error_500'] = 'Данный сайт уже используется на сайте http://intarget.ru';
 $_['error_error_400'] = 'Заполните обязательные поля';
 ?>
