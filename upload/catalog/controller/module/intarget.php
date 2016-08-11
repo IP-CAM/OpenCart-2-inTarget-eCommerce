@@ -2,7 +2,7 @@
 /**
  * 2016 inTarget
  * @author    inTarget Team <https://intarget.ru/>
- * @copyright 2015 inTarget
+ * @copyright 2016 inTarget
  * @license   GNU General Public License, version 3
  */
 
