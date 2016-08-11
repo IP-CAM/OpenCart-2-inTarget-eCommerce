@@ -49,7 +49,7 @@ License: GNU General Public License, version 2
 
 ## Изменения
 
-#### 1.0.1
+#### 1.0.2
  - Minor fix.
 
 #### 1.0.1
